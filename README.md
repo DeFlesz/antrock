@@ -18,6 +18,9 @@ That means `cmake` and `g++/gcc` (or any other compiler) is all you need.
 
 From root directory you can:
 ```bash
+#only if build folder does not exist
+mkdir build
+
 cd build
 cmake ..
 make
