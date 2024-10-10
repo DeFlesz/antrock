@@ -16,6 +16,9 @@ CompileFlags:
 I use **CMake** as the basis for the build procedure.
 That means `cmake` and `g++/gcc` (or any other compiler) is all you need.
 
+**Make sure you have everything required for glfw, glad and other libraries installed**
+__TODO make sure CMake automation checks for all of that__
+
 From root directory you can:
 ```bash
 #only if build folder does not exist
