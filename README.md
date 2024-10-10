@@ -17,7 +17,8 @@ I use **CMake** as the basis for the build procedure.
 That means `cmake` and `g++/gcc` (or any other compiler) is all you need.
 
 **Make sure you have everything required for glfw, glad and other libraries installed**
-__TODO make sure CMake automation checks for all of that__
+
+_TODO make sure CMake automation checks for all of that_
 
 From root directory you can:
 ```bash
@@ -42,6 +43,9 @@ cd build/apps
 cd build/apps
 ./app.exe
 ```
+
+## Contributing & stuff
+Whenever you want to add new dependency do it first on the branch which was created for that: `add_submodules`
 
 ## Libraries used
 tba

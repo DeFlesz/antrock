@@ -25,6 +25,9 @@ set(GLAD_SOURCES_DIR "${PROJECT_SOURCE_DIR}/extern/glad/")
 # Path to glad cmake files
 add_subdirectory("${GLAD_SOURCES_DIR}/cmake" glad_cmake)
 
+# glm
+add_subdirectory(extern/glm)
+
 # Specify glad settings
 glad_add_library(glad_gl_core_33 REPRODUCIBLE API gl:core=3.3)
 
