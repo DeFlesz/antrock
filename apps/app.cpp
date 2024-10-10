@@ -1,6 +1,9 @@
 #include <iostream>
-#include <antrock/renderer/renderer.hpp>
+
+#include <glad/gl.h>
 #include <GLFW/glfw3.h>
+
+#include <antrock/renderer/renderer.hpp>
 
 int main()
 {
