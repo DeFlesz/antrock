@@ -1,8 +1,10 @@
 set(renderer_include_path "${antrock_SOURCE_DIR}/include/antrock/renderer")
-set(HEADER_LIST "${renderer_include_path}/renderer.hpp"
-                "${renderer_include_path}/GL/Shader.hpp")
+set(HEADER_LIST
+    "${renderer_include_path}/renderer.hpp"
+    "${renderer_include_path}/GL/VAO.hpp" "${renderer_include_path}/GL/VBO.hpp"
+    "${renderer_include_path}/GL/Shader.hpp")
 
-set(SOURCE_LIST renderer.cpp GL/Shader.cpp)
+set(SOURCE_LIST renderer.cpp GL/VAO.cpp GL/VBO.cpp GL/Shader.cpp)
 
 # Make an automatic library - will be static or dynamic based on user setting
 add_library(renderer ${SOURCE_LIST} ${HEADER_LIST})
