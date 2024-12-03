@@ -8,6 +8,7 @@
 #include <antrock/renderer/GL/Shader.hpp>
 #include <antrock/renderer/GL/VBO.hpp>
 #include <antrock/renderer/GL/VAO.hpp>
+#include <antrock/renderer/Vertex.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -20,12 +21,13 @@ int main()
 	R"(#version 330 core
 
 layout (location = 0) in vec3 position;
+layout (location = 1) in vec3 color;
 
 out vec3 vertColor;
 
 void main(void)
 {
-	vertColor = vec3(1.0, 0.0, 1.0);
+	vertColor = color;
 	gl_Position = vec4(position, 1.0);
 })";
 
@@ -41,19 +43,22 @@ void main(void)
 	color = vec4(vertColor, 1.0);
 })";
 
-	float vertices[] = {
-		// first triangle
-		0.5f,  0.5f, 0.0f,  // top right
-		0.5f, -0.5f, 0.0f,  // bottom right
-		-0.5f,  0.5f, 0.0f,  // top left 
-		// second triangle
-		0.5f, -0.5f, 0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,  // bottom left
-		-0.5f,  0.5f, 0.0f   // top left
+
+	Vertex vertices[] = {
+		{{-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}},
+		{{0.0f, 0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}},
+		{{0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}}
+		//{{0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}},
+		//{{0.5f, -0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}},  // bottom right
+		//{{-0.5f,  0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}},  // top left 
+		//// second triangle
+		//{{0.5f, -0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}},  // bottom right
+		//{{-0.5f, -0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}},  // bottom left
+		//{{-0.5f,  0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}}   // top left
 	};
 
 
-	std::cout << "Hello, world!" << std::endl;
+	std::cout << "App works!" << std::endl;
 	//renderer r;
 	//r.test();
 	if (!glfwInit())
@@ -78,7 +83,9 @@ void main(void)
 
 	while (!glfwWindowShouldClose(window))
 	{
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glClearColor(0.9f, 0.1f, 1.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		glDrawArrays(GL_TRIANGLES, 0, std::size(vertices));
 		glfwSwapBuffers(window);
 		// Keep running
 	}
